@@ -25,11 +25,12 @@ function createUsers(users) {
 
 // Votre code ici (8 lignes)
 
-getUsers()
-.then(createUsers)
-.then(res => {
+const collectPromise = (res) => {
     Promise.all(res)
     .then(() => console.log('Tous le monde est là'))
-  }
-)
+}
+
+getUsers()
+.then(createUsers)
+.then(collectPromise)
 
