@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 // La fonction Game a terminer (ça se corse)
 
-const WORD_LIST = ['chevre', 'vache']
+const WORD_LIST = ['chevre', 'vache', 'taureau']
 
 class Game {
   constructor() {
@@ -21,8 +21,9 @@ class Game {
     function init() {
       lives = 5
 
-      word = // TODO: récupérer un mot random depuis WORD_LIST (1 ligne)
+      word = WORD_LIST[Math.floor(Math.random() * WORD_LIST.length)]// TODO: récupérer un mot random depuis WORD_LIST (1 ligne)
         letters = []
+        console.log(word)
       // Count without duplicated
       missing = Array.prototype.filter.call(word, (letter, i) => {
         return word.indexOf(letter) == i
@@ -30,7 +31,18 @@ class Game {
     }
 
     function addLetter(letter) {
-      // TODO: cette fonction doit :
+      let letterTried = this.letters.includes(letter)
+      if (letterTried === true) {
+        this.lives--
+      }else{
+        this.letters.push(letter)
+        if (this.word.includes(letter) === true) {
+          this.missing--
+        }else{
+          this.lives--
+        }
+      }
+      // TODO: cette fonction doit :nodee
       // - vérifier que la lettre n'a pas déjà été tentée auparavent
       // - si ce n'est pas le cas, l'ajouter dans le tableau `letters`
       // - modifier `lives` et `missing` en conséquence
@@ -39,6 +51,12 @@ class Game {
     }
 
     function displayWord() {
+      let wordDisplayed = []
+      Array.from(word).forEach(w => {
+        if (this.letters.indexOf(letter) = w) {
+          wordDisplayed.push(w)
+        }
+      });
       // TODO: cette fonction doit:
       // - retourner une chaine de caractère
       // - les lettres trouvées et celles manquantes remplacées par un underscore
