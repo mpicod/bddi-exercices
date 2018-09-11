@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+</head>
+<body>
+    <input type="text"> <br>
+    <button data-id=1 >Ajoute li à la fin</button> <br>
+    <button data-id=2>Ajoute li au début</button> <br>
+    <button data-id=3> Supprime dernier li</button> <br>
+    <button data-id=4>Supprime premier li</button> <br>
+    <ul></ul>
+
+
+    <script>
+            const ul = document.querySelector('ul')
+            const buttons = Array.from(document.querySelectorAll('button'))
+            const input = document.querySelector('input')
+            
+    
+
+    
+            const handleClick = e => {
+                const buttonTarget = e.target.dataset.id
+                const inputValue = input.value
+                
+                if (buttonTarget == 1) { addListItem(e)} 
+                // (buttonTarget == 2) ? addListItem() 
+                // (buttonTarget == 3) ? addListItem() 
+                // (buttonTarget == 4) ? addListItem() 
+            }
+
+            const addListItem = e => {
+                const el = document.createElement('li')
+    
+                el.textContent = input.value
+                ul.appendChild(el)
+            }
+
+            buttons.forEach(button => {
+                button.addEventListener('click', handleClick)
+            })
+            
+        </script>
+</body>
+</html>
