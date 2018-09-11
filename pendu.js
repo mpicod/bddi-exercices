@@ -9,7 +9,7 @@ const rl = readline.createInterface({
 
 // La fonction Game a terminer (ça se corse)
 
-const WORD_LIST = ['chevre', 'vache', 'taureau']
+const WORD_LIST = ['chevre', 'vache', 'taureau', 'pierre']
 
 class Game {
   constructor() {
@@ -31,15 +31,15 @@ class Game {
     }
 
     function addLetter(letter) {
-      let letterTried = this.letters.includes(letter)
+      let letterTried = letters.includes(letter)
       if (letterTried === true) {
-        this.lives--
+        lives--
       }else{
-        this.letters.push(letter)
-        if (this.word.includes(letter) === true) {
-          this.missing--
+        letters.push(letter)
+        if (word.includes(letter) === true) {
+          missing--
         }else{
-          this.lives--
+          lives--
         }
       }
       // TODO: cette fonction doit :nodee
@@ -52,11 +52,13 @@ class Game {
 
     function displayWord() {
       let wordDisplayed = []
-      Array.from(word).forEach(w => {
-        if (this.letters.indexOf(letter) = w) {
-          wordDisplayed.push(w)
-        }
-      });
+      console.log(letters)
+    //  Array.from(word).forEach(w => {
+        // if (this.letters.indexOf(letter)) {
+      //     wordDisplayed.push(w)
+      //   }
+      // });
+
       // TODO: cette fonction doit:
       // - retourner une chaine de caractère
       // - les lettres trouvées et celles manquantes remplacées par un underscore
