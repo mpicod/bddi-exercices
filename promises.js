@@ -20,7 +20,7 @@ function createUser(name) {
 function createUsers(users) {
   return users.map((user) => {
     return createUser(user)
-  })
+  }) // map le tableau et retourne un tableau de promesse
 }
 
 // Votre code ici (8 lignes)
@@ -28,7 +28,7 @@ function createUsers(users) {
 const collectPromise = (res) => {
     Promise.all(res)
     .then(() => console.log('Tous le monde est là'))
-}
+} // un tableau de promesse est récupéré par Promise.all
 
 getUsers()
 .then(createUsers)
