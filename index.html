@@ -29,16 +29,36 @@
                 const inputValue = input.value
                 
                 if (buttonTarget == 1) { addListItem(e)} 
-                // (buttonTarget == 2) ? addListItem() 
-                // (buttonTarget == 3) ? addListItem() 
-                // (buttonTarget == 4) ? addListItem() 
+                if (buttonTarget == 2) { addListItem(e)}
+                if (buttonTarget == 3) { removeListItem(e)} 
+                if (buttonTarget == 4) { removeListItem(e) }
             }
 
             const addListItem = e => {
+
+                const buttonTarget = e.target.dataset.id
                 const el = document.createElement('li')
-    
                 el.textContent = input.value
-                ul.appendChild(el)
+
+                if (buttonTarget == 1) {
+                    ul.appendChild(el)
+                }else if (buttonTarget == 2) {
+                    console.log('boutton2')
+                    ul.insertBefore(el)
+                }
+            }
+
+            const removeListItem = e => {
+                const buttonTarget = e.target.dataset.id
+                const listItems = Array.from(document.querySelectorAll('li').children)
+                console.log(listItems)
+
+
+                if (buttonTarget == 3) {
+                    listItems[0].remove()
+                }else if (buttonTarget == 4) {
+                    listItems[listItems.lenght].remove()
+                }
             }
 
             buttons.forEach(button => {
