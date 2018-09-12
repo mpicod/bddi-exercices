@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   
+    <script>
+        const canvas = document.createElement('canvas')
+        const ctx = canvas.getContext('2d')
+
+        canvas.width = '2000',
+        canvas.height = '2000'
+        
+
+
+        document.body.appendChild(canvas)
+
+        let counter = 0
+        function animate() {
+            requestAnimationFrame(animate)
+
+            ctx.moveTo(counter % canvas.width,0)
+            if (counter%4 == 1) {
+                ctx.lineTo(200+ Math.cos(counter), 2000-counter)
+                ctx.lineTo(2000-counter, Math.sqrt(counter))
+                ctx.stroke()
+            }
+            
+            
+            
+            counter++
+        }
+        animate()
+    </script>
+</body>
+</html>
